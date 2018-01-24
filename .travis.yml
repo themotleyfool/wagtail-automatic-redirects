@@ -1,0 +1,26 @@
+language: python
+python:
+- '2.7'
+cache:
+  directories:
+  - "$HOME/.cache/pip"
+env:
+  global:
+  - PIP_INDEX_URL=https://www.fool.com/a/apikey/$DEVPI_API_KEY/fool/packages/+simple/
+  - PACKAGE_NAME=wagtail-redirects
+install:
+- pip install -U setuptools
+- pip install -U pip
+- pip install .
+- pip install -U .[test]
+script:
+- python setup.py test
+deploy:
+  provider: pypi
+  server: https://www.fool.com/a/apikey/$DEVPI_API_KEY/fool/packages/
+  skip_upload_docs: true
+  user: travisci
+  on:
+    tags: true
+  password:
+    secure: je7i7Z0h86Aquw8uY95YJansl6fsrhtzK33xFUFSIjYpujBVz+xGJlw1fO9Lt0DWuZDmlq1VL5/dJ42rj0nCzABy78idYz8KBsep1B8fM7ps8I1kaQtpvkpRPhN5vWPtCu5DDWSqRbERG4XwKsUMhAgfay4+UXYOYsEoQ+jIOeC3r15gevbYQ3nXgL3wOdKP+6sz80FVDWj2xEkA7eOBRWcs7yf0kWHXjL6yU5JiWck1A2zo+ZKcEkee+5aplEtmJb311sgCZqo+hl1SnBYh0veLHd9omwUdnsao1giTxaRbX6BzR5bnoiw1VYu+D2jsQOi/eXjdqwCi1n+Pq12li/he5fanngW7LlZsZDKwN6gsCriy+rn1S0x6eM2LfpxmkPZwA/wQmrdz4ZjMDzpKOYe25utyW0Dojvs+S7Un/3nrfkzuWX+7L2b+w/sZpJ/pHjUABWKqCmduXmvT8HI3Nq2mBC/XZ/TGmd/Arez679f0QiWpZfQSFLnmPb5wCO9Fc4R8Yaq5jmA4Kx3yWFd31mStC6Ve9liO6MFzaYClmpBd1qK+WvlvO4tigHtxTBxLePNjTdBfWC2dZKSt+aWTJUReVhcXlHLEyfYx8wJogMAdCH8bsbmbYugeV7s268H1tGren7j+gDD705BHlGFlrshhm062mujEObe7AUOMeT0=
