@@ -1,0 +1,9 @@
+.idea/
+MANIFEST
+*.pyc
+*.egg-info
+dist/
+local_settings.py
+*.egg
+*.tar.gz
+.eggs/
