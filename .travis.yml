@@ -7,7 +7,7 @@ cache:
 env:
   global:
   - PIP_INDEX_URL=https://www.fool.com/a/apikey/$DEVPI_API_KEY/fool/packages/+simple/
-  - PACKAGE_NAME=wagtail-redirects
+  - PACKAGE_NAME=wagtail-automatic-redirects
 install:
 - pip install -U setuptools
 - pip install -U pip
