@@ -7,7 +7,7 @@ install_requires = [
 tests_require = []
 
 setup(
-    name='wagtail-redirects',
+    name='wagtail-automatic-redirects',
     description='Helpers for Wagtail Redirects',
     author='The Motley Fool',
     author_email='github@fool.com',
