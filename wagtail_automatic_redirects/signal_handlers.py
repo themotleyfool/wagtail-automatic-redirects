@@ -23,7 +23,7 @@ def create_redirect_object_if_slug_changed(sender, **kwargs):
     page_revisions = instance.revisions.order_by('-created_at', '-id')
     for revision in page_revisions:
         page_obj = revision.page.specific_class.from_json(
-            revision.content_json).specific
+            revision.content_json)
 
         # The first revision's page object that has has_published_changes
         # value False is the last published Page.
