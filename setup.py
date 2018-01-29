@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 install_requires = [
-    'wagtail',
+    'wagtail<2.0',
 ]
 
 tests_require = []
