@@ -1,0 +1,1 @@
+default_app_config = 'wagtail_automatic_redirects.apps.WagtailAutomaticRedirectsAppConfig'

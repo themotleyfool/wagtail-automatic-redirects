@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 install_requires = [
-    'wagtail',
+    'wagtail<2.0',
 ]
 
 tests_require = []
@@ -11,7 +11,7 @@ setup(
     description='Helpers for Wagtail Redirects',
     author='The Motley Fool',
     author_email='github@fool.com',
-    url='https://github.com/themotleyfool/wagtail-redirects',
+    url='https://github.com/themotleyfool/wagtail-automatic-redirects',
     packages=find_packages(),
     include_package_data=True,
     install_requires=install_requires,
