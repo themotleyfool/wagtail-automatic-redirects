@@ -19,7 +19,13 @@ INSTALLED_APPS = (
 )
 ```
 
-Also, make sure the INSTALLED_APPS setting include `'wagtail.wagtailredirects'` app from Wagtail.
+Make sure the INSTALLED_APPS setting include `'wagtail.wagtailredirects'` app from Wagtail.
+
+Also, check the `MIDDLEWARE` setting include
+
+```python
+'wagtail.wagtailredirects.middleware.RedirectMiddleware',
+```
 
 ## Usage
 
