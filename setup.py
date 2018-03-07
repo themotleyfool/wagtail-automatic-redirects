@@ -4,7 +4,12 @@ install_requires = [
     'wagtail<2.0',
 ]
 
-tests_require = []
+tests_require = [
+    'pytest-django',
+    'wagtail-factories',
+    'pytest',
+    'wagtail<2.0'
+]
 
 setup(
     name='wagtail-automatic-redirects',
@@ -23,6 +28,6 @@ setup(
         'Operating System :: OS Independent',
         'Topic :: Software Development'
     ],
-    setup_requires=['setuptools_scm', ],
+    setup_requires=['setuptools_scm', 'pytest-runner'],
     use_scm_version=True,
 )

@@ -7,3 +7,6 @@ local_settings.py
 *.egg
 *.tar.gz
 .eggs/
+.DS_Store
+.cache/
+.pytest_cache/
