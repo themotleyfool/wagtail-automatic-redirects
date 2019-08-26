@@ -1,14 +1,13 @@
 from setuptools import setup, find_packages
 
 install_requires = [
-    'wagtail<2.0',
+    'wagtail',
 ]
 
 tests_require = [
     'pytest-django',
     'wagtail-factories',
     'pytest',
-    'wagtail<2.0'
 ]
 
 setup(

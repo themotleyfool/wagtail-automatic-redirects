@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import migrations, models
-import wagtail.wagtailcore.fields
+import wagtail.core.fields
 
 
 class Migration(migrations.Migration):
@@ -15,9 +15,9 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='AutomaticRedirectsTestIndexPage',
             fields=[
-                ('page_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
+                ('page_ptr', models.OneToOneField(on_delete=models.deletion.CASCADE, parent_link=True, auto_created=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
                 ('subtitle', models.CharField(default=b'', max_length=255, blank=True)),
-                ('body', wagtail.wagtailcore.fields.RichTextField(default=b'', blank=True)),
+                ('body', wagtail.core.fields.RichTextField(default=b'', blank=True)),
             ],
             options={
                 'abstract': False,
@@ -27,8 +27,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='AutomaticRedirectsTestPage',
             fields=[
-                ('page_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
-                ('body', wagtail.wagtailcore.fields.RichTextField(default=b'', blank=True)),
+                ('page_ptr', models.OneToOneField(on_delete=models.deletion.CASCADE, parent_link=True, auto_created=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
+                ('body', wagtail.core.fields.RichTextField(default=b'', blank=True)),
             ],
             options={
                 'abstract': False,
