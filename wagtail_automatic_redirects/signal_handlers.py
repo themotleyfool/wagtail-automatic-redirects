@@ -1,5 +1,11 @@
-from wagtail.wagtailcore.signals import page_published
-from wagtail.wagtailredirects.models import Redirect
+from wagtail import VERSION as WAGTAIL_VERSION
+
+if WAGTAIL_VERSION >= (2, 0):
+    from wagtail.core.signals import page_published
+    from wagtail.contrib.redirects.models import Redirect
+else:
+    from wagtail.wagtailcore.signals import page_published
+    from wagtail.wagtailredirects.models import Redirect
 
 
 # Create redirect from old slug to new if slug changed in published page.
