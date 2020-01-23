@@ -25,7 +25,11 @@ setup(
     classifiers=[
         'Intended Audience :: Developers',
         'Operating System :: OS Independent',
-        'Topic :: Software Development'
+        'Topic :: Software Development',
+        'Programming Language :: Python',
+        'Programming Language :: Python :: 3',
+        'Framework :: Django',
+        'Framework :: Wagtail',
     ],
     setup_requires=['setuptools_scm', 'pytest-runner'],
     use_scm_version=True,
