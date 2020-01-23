@@ -4,19 +4,17 @@ Package to help with Wagtail URL redirects. Wagtail comes with a [redirects app]
 
 ## Installation
 
-```shell
     pip install wagtail-automatic-redirects
-```
 
 Add the package to your project's settings
 
 ```python
-INSTALLED_APPS = (
+INSTALLED_APPS = [
     # ... Other apps
-  "wagtail_automatic_redirects",
-  "wagtail.contrib.redirects",
+    "wagtail_automatic_redirects",
+    "wagtail.contrib.redirects",
     # ... Other apps
-)
+]
 ```
 
 Make sure the `INSTALLED_APPS` setting include `"wagtail.contrib.redirects",` app from Wagtail.
@@ -24,5 +22,9 @@ Make sure the `INSTALLED_APPS` setting include `"wagtail.contrib.redirects",` ap
 Also, check the `MIDDLEWARE` setting include
 
 ```python
+MIDDLEWARE = [
+    # ... Other middlewares
     "wagtail.contrib.redirects.middleware.RedirectMiddleware",
+    # ... Other middlewares
+]
 ```
