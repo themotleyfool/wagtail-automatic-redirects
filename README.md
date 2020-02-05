@@ -28,3 +28,7 @@ MIDDLEWARE = [
     # ... Other middlewares
 ]
 ```
+
+## License
+
+[BSD](https://github.com/themotleyfool/wagtail-automatic-redirects/blob/master/LICENSE)
