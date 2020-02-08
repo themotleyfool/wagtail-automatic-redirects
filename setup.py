@@ -7,8 +7,8 @@ tests_require = ["pytest-django", "wagtail-factories", "pytest"]
 setup(
     name="wagtail-automatic-redirects",
     description="Helpers for Wagtail Redirects",
-    author="The Motley Fool",
-    author_email="github@fool.com",
+    author="Parbhat Puri",
+    author_email="me@parbhatpuri.com",
     url="https://github.com/themotleyfool/wagtail-automatic-redirects",
     packages=find_packages(),
     include_package_data=True,
