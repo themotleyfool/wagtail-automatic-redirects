@@ -5,6 +5,7 @@ install_requires = ["wagtail"]
 tests_require = ["pytest-django", "wagtail-factories", "pytest"]
 
 setup(
+    version="1.0.0",
     name="wagtail-automatic-redirects",
     description="Helpers for Wagtail Redirects",
     author="Parbhat Puri",
@@ -26,5 +27,4 @@ setup(
         "Framework :: Wagtail",
     ],
     setup_requires=["setuptools_scm", "pytest-runner"],
-    use_scm_version=True,
 )
