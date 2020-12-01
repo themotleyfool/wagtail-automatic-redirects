@@ -7,7 +7,7 @@ if WAGTAIL_VERSION >= (2, 0):
     if WAGTAIL_VERSION >= (2, 10):
         from wagtail.core.signals import post_page_move
     else:
-        pre_page_move = None
+        post_page_move = None
 else:
     from wagtail.wagtailcore.signals import page_published
     from wagtail.wagtailredirects.models import Redirect
