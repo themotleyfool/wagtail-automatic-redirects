@@ -3,6 +3,11 @@ from wagtail import VERSION as WAGTAIL_VERSION
 if WAGTAIL_VERSION >= (2, 0):
     from wagtail.core.signals import page_published
     from wagtail.contrib.redirects.models import Redirect
+
+    if WAGTAIL_VERSION >= (2, 10):
+        from wagtail.core.signals import post_page_move
+    else:
+        pre_page_move = None
 else:
     from wagtail.wagtailcore.signals import page_published
     from wagtail.wagtailredirects.models import Redirect
@@ -48,9 +53,29 @@ def create_redirect_object_if_slug_changed(sender, **kwargs):
             break
 
 
+def create_redirect_object_after_page_move(sender, **kwargs):
+    if kwargs['url_path_before'] == kwargs['url_path_after']:
+        return
+
+    page_after = kwargs['instance']
+    parent_page_before_url = kwargs['parent_page_before'].get_url()
+    page_before_url = Redirect.normalise_path(
+        parent_page_before_url + page_after.slug
+    )
+    Redirect.objects.update_or_create(
+        old_path=page_before_url,
+        defaults={
+            'redirect_page': page_after
+        }
+    )
+
+
 # Register receivers
 def register_signal_handlers():
     page_published.connect(create_redirect_object_if_slug_changed)
+
+    if post_page_move is not None:
+        post_page_move.connect(create_redirect_object_after_page_move)
 
 
 def create_redirect_objects_for_children(parent_old_slug, parent):
