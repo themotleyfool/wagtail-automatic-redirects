@@ -1,5 +1,7 @@
 import pytest
 
+from wagtail import VERSION as WAGTAIL_VERSION
+
 from tests.testapp import factories
 
 
@@ -97,6 +99,10 @@ def test_index_page_slug_change_create_redirects_child_pages(client, site):
     assert response.status_code == 301
 
 
+@pytest.mark.skipif(
+    WAGTAIL_VERSION < (2, 10),
+    reason="Move signals require wagtail 2.10 or higher"
+)
 @pytest.mark.django_db
 def test_move_page_from_one_index_to_another_creates_redirect(client, site):
     test_index_page_1 = factories.AutomaticRedirectsTestIndexPageFactory(
@@ -148,8 +154,10 @@ def test_move_page_from_one_index_to_another_creates_redirect(client, site):
     assert response.status_code == 301
 
 
-
-
+@pytest.mark.skipif(
+    WAGTAIL_VERSION < (2, 10),
+    reason="Move signals require wagtail 2.10 or higher"
+)
 @pytest.mark.django_db
 def test_move_page_from_one_index_to_another_creates_redirect_for_child(
         client,
