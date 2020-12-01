@@ -69,6 +69,8 @@ def create_redirect_object_after_page_move(sender, **kwargs):
         }
     )
 
+    create_redirect_objects_for_children(page_before_url, page_after)
+
 
 # Register receivers
 def register_signal_handlers():
