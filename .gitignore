@@ -10,3 +10,4 @@ local_settings.py
 .DS_Store
 .cache/
 .pytest_cache/
+env/
