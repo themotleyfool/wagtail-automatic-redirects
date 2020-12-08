@@ -11,3 +11,5 @@ local_settings.py
 .cache/
 .pytest_cache/
 env/
+.venv
+build/
