@@ -1,27 +1,19 @@
 language: python
 python:
-- 3.6
-cache:
-  pip: true
-env:
-  global:
-  - PIP_INDEX_URL=$PYPI_URL+simple/
-  - PACKAGE_NAME=wagtail-automatic-redirects
+  - 3.6
+cache: pip
 install:
-- pip install -U setuptools
-- pip install -U pip
-- pip install .
-- pip install -U .[test]
+  - pip install -U setuptools
+  - pip install -U pip
+  - pip install .
+  - pip install -U .[test]
 script:
-- python setup.py test
+  - python setup.py test
 deploy:
   provider: pypi
   server: $PYPI_URL
-  upload_docs: false
-  user: travisci
+  user: "__token__"
+  password: $PYPI_TOKEN
+  skip_existing: true
   on:
     tags: true
-  password:
-    secure: $TRAVIS_CI_PASSWORD
-after_deploy:
-- curl -X POST "$PIP_INDEX_URL$PACKAGE_NAME/refresh"

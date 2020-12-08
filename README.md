@@ -4,7 +4,7 @@ Package to help with Wagtail URL redirects. Wagtail comes with a [redirects app]
 
 ## Installation
 
-    pip install wagtail-automatic-redirects
+`pip install wagtail-automatic-redirects`
 
 Add the package to your project's settings
 
