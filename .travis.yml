@@ -11,8 +11,7 @@ script:
   - python setup.py test
 deploy:
   provider: pypi
-  server: $PYPI_URL
-  user: "__token__"
+  username: "__token__"
   password: $PYPI_TOKEN
   skip_existing: true
   on:
