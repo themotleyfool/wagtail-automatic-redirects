@@ -11,7 +11,7 @@ with open(
     long_description = f.read()
 
 setup(
-    version="1.1.2",
+    version="1.1.3",
     name="wagtail-automatic-redirects",
     description="Helpers for Wagtail Redirects",
     long_description=long_description,

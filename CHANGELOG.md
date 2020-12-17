@@ -1,4 +1,4 @@
-# 1.1.2
+# 1.1.3
 
 - Create a redirect when a page gets moved (https://github.com/themotleyfool/wagtail-automatic-redirects/pull/9).
 
