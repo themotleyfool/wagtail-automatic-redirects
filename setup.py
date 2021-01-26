@@ -33,6 +33,7 @@ setup(
         "Programming Language :: Python :: 3",
         "Framework :: Django",
         "Framework :: Wagtail",
+        "License :: OSI Approved :: BSD License",
     ],
     setup_requires=["setuptools_scm", "pytest-runner"],
     python_requires=">=3.6",
