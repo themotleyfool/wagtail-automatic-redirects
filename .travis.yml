@@ -1,7 +1,13 @@
 language: python
 python:
-  - 3.6
+  - 3.7
+  - 3.8
+  - 3.9
 cache: pip
+jobs:
+  allow_failures:
+    - python: 3.8
+    - python: 3.9
 install:
   - pip install -U setuptools
   - pip install -U pip
