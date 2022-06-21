@@ -1,3 +1,4 @@
+import json
 from wagtail import VERSION as WAGTAIL_VERSION
 
 if WAGTAIL_VERSION >= (3, 0):
@@ -29,8 +30,12 @@ def create_redirect_object_if_slug_changed(sender, **kwargs):
     # JSON and value is stored as JSON in revision.
     page_revisions = instance.revisions.order_by('-created_at', '-id')
     for revision in page_revisions:
-        page_obj = revision.page.specific_class.from_json(
-            revision.content_json)
+        if WAGTAIL_VERSION >= (3, 0):
+            page_obj = revision.page.specific_class.from_json(
+                json.dumps(revision.content))
+        else:
+            page_obj = revision.page.specific_class.from_json(
+                revision.content_json)
 
         # The first revision's page object that has has_published_changes
         # value False is the last published Page.

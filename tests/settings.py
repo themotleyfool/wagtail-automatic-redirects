@@ -2,6 +2,10 @@ import os
 from wagtail import VERSION as WAGTAIL_VERSION
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'localhost',
+]
 
 ADMINS = (
     ('test@example.com', 'TEST-R'),
