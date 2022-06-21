@@ -12,6 +12,7 @@ jobs:
 install:
   - pip install -U setuptools
   - pip install -U pip
+  - pip install -U importlib-metadata
   - pip install .
   - pip install -U .[test]
 script:
