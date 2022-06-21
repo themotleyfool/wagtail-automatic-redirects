@@ -71,9 +71,7 @@ def create_redirect_object_after_page_move(sender, **kwargs):
 # Register receivers
 def register_signal_handlers():
     page_published.connect(create_redirect_object_if_slug_changed)
-
-    if post_page_move is not None:
-        post_page_move.connect(create_redirect_object_after_page_move)
+    post_page_move.connect(create_redirect_object_after_page_move)
 
 
 def create_redirect_objects_for_children(parent_old_slug, parent):
