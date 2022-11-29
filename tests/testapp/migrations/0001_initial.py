@@ -2,7 +2,12 @@
 from __future__ import unicode_literals
 
 from django.db import migrations, models
-import wagtail.core.fields
+from wagtail import VERSION as WAGTAIL_VERSION
+if WAGTAIL_VERSION >= (3, 0):
+    import wagtail.fields as wagtail_fields
+else:
+    import wagtail.core.fields as wagtail_fields
+
 
 
 class Migration(migrations.Migration):
@@ -17,7 +22,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('page_ptr', models.OneToOneField(on_delete=models.deletion.CASCADE, parent_link=True, auto_created=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
                 ('subtitle', models.CharField(default=b'', max_length=255, blank=True)),
-                ('body', wagtail.core.fields.RichTextField(default=b'', blank=True)),
+                ('body', wagtail_fields.RichTextField(default=b'', blank=True)),
             ],
             options={
                 'abstract': False,
@@ -28,7 +33,7 @@ class Migration(migrations.Migration):
             name='AutomaticRedirectsTestPage',
             fields=[
                 ('page_ptr', models.OneToOneField(on_delete=models.deletion.CASCADE, parent_link=True, auto_created=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
-                ('body', wagtail.core.fields.RichTextField(default=b'', blank=True)),
+                ('body', wagtail_fields.RichTextField(default=b'', blank=True)),
             ],
             options={
                 'abstract': False,

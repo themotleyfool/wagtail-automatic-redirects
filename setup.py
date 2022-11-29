@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 from os import path
 
-install_requires = ["wagtail"]
+install_requires = ["wagtail>=2.15"]
 
 tests_require = ["pytest-django", "wagtail-factories", "pytest"]
 
@@ -31,10 +31,17 @@ setup(
         "Topic :: Software Development",
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
         "Framework :: Django",
+        "Framework :: Django :: 3.2",
+        "Framework :: Django :: 4.0",
         "Framework :: Wagtail",
+        "Framework :: Wagtail :: 2",
+        "Framework :: Wagtail :: 3",
         "License :: OSI Approved :: BSD License",
     ],
     setup_requires=["setuptools_scm", "pytest-runner"],
-    python_requires=">=3.6",
+    python_requires=">=3.7",
 )

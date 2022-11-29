@@ -1,17 +1,14 @@
+import json
 from wagtail import VERSION as WAGTAIL_VERSION
 
-if WAGTAIL_VERSION >= (2, 0):
+if WAGTAIL_VERSION >= (3, 0):
+    from wagtail.signals import page_published
+    from wagtail.contrib.redirects.models import Redirect
+    from wagtail.signals import post_page_move
+elif WAGTAIL_VERSION >= (2, 15):
     from wagtail.core.signals import page_published
     from wagtail.contrib.redirects.models import Redirect
-
-    if WAGTAIL_VERSION >= (2, 10):
-        from wagtail.core.signals import post_page_move
-    else:
-        post_page_move = None
-else:
-    from wagtail.wagtailcore.signals import page_published
-    from wagtail.wagtailredirects.models import Redirect
-
+    from wagtail.core.signals import post_page_move
 
 # Create redirect from old slug to new if slug changed in published page.
 # Redirect will be created for Page and all it's children.
@@ -33,8 +30,12 @@ def create_redirect_object_if_slug_changed(sender, **kwargs):
     # JSON and value is stored as JSON in revision.
     page_revisions = instance.revisions.order_by('-created_at', '-id')
     for revision in page_revisions:
-        page_obj = revision.page.specific_class.from_json(
-            revision.content_json)
+        if WAGTAIL_VERSION >= (3, 0):
+            page_obj = revision.page.specific_class.from_json(
+                json.dumps(revision.content))
+        else:
+            page_obj = revision.page.specific_class.from_json(
+                revision.content_json)
 
         # The first revision's page object that has has_published_changes
         # value False is the last published Page.
@@ -75,9 +76,7 @@ def create_redirect_object_after_page_move(sender, **kwargs):
 # Register receivers
 def register_signal_handlers():
     page_published.connect(create_redirect_object_if_slug_changed)
-
-    if post_page_move is not None:
-        post_page_move.connect(create_redirect_object_after_page_move)
+    post_page_move.connect(create_redirect_object_after_page_move)
 
 
 def create_redirect_objects_for_children(parent_old_slug, parent):
